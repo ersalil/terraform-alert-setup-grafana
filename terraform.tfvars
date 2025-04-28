@@ -1,0 +1,6 @@
+aws_region               = "us-east-2"
+rds_instance_identifier  = "database-1-instance-1"
+grafana_url              = "http://a3816704f352f420484a6a7a9afbbc65-b09b4afd072418e4.elb.us-east-2.amazonaws.com"
+grafana_auth             = ""
+aws_access_key           = ""
+aws_secret_key           = ""
