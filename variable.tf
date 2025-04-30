@@ -40,3 +40,9 @@ variable "levelwise_alert_summary" {
   type        = string
   default = "🚨 Alert: {{ $labels.alertname }} is triggered!\n\n{{ $value := $values.B.Value }}\n{{ if gt $value 90.0 }}\n🔴 High Severity\n(Current value: {{ printf \"%.2f\" $value }})\n{{ else if gt $value 80.0 }}\n🟠 Low Severity\n(Current value: {{ printf \"%.2f\" $value }})\n{{ else }}\n⚠️ Warning\n(Current value: {{ printf \"%.2f\" $value }})\n{{ end }} 🚨"
 }
+
+variable "alert_email_address" {
+  description = "Email address to receive Grafana alerts"
+  type        = string
+  default     = "testsalilapp@gmail.com"
+}
