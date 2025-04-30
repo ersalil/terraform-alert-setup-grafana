@@ -1,7 +1,7 @@
 resource "grafana_contact_point" "email" {
   name = "Alert Email"
   email {
-    addresses = ["salil.hexa@gmail.com"]
+    addresses = [var.alert_email_address]
   }
 }
 
