@@ -8,6 +8,7 @@ resource "grafana_dashboard" "rds-dash" {
    DS_CLOUDWATCH = grafana_data_source.cloudwatch.uid
   })
    folder = grafana_folder.RDS-folder.uid
+   overwrite   = true
 }
 
 resource "grafana_dashboard" "rds-logs" {
@@ -15,4 +16,5 @@ resource "grafana_dashboard" "rds-logs" {
    DS_CLOUDWATCH = grafana_data_source.cloudwatch.uid
   })
    folder = grafana_folder.RDS-folder.uid
+   overwrite   = true
 }
