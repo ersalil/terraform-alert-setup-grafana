@@ -21,8 +21,6 @@ It automatically configures:
 ├── main.tf                 # Main Terraform orchestration
 ├── provider.tf             # Provider configurations (AWS & Grafana)
 ├── rds_alerts.tf           # RDS-specific alert rule definitions
-├── terraform.tfstate       # Terraform state file (generated after apply)
-├── terraform.tfstate.backup# Terraform backup state
 ├── terraform.tfvars        # Variables file (values for the variables)
 └── variable.tf             # Input variable definitions
 ```
@@ -41,6 +39,7 @@ It automatically configures:
 | `aws_secret_key`          | AWS Secret Key for Grafana CloudWatch access | **Required** |
 | `common_alert_summary`    | Basic alert summary message template      | Provided |
 | `levelwise_alert_summary` | Advanced alert summary with severity levels| Provided |
+| `alert_email_address` | Email where alerts will be sent | Provided |
 
 > **Note**: `terraform.tfvars` file is where you should put actual values for these variables.
 
@@ -88,6 +87,7 @@ Grafana connects to CloudWatch using the provided `aws_access_key` and `aws_secr
     grafana_auth = "eyJrIjo..."
     aws_access_key = "AKIA..."
     aws_secret_key = "your-secret-key"
+    alert_email_address = "alerts@example.com"
     ```
 3. Initialize the project:
     ```bash
@@ -96,6 +96,13 @@ Grafana connects to CloudWatch using the provided `aws_access_key` and `aws_secr
 
 4. Review the plan:
     ```bash
+    # Format your Terraform code to follow standard conventions
+    terraform fmt
+
+    # Validate your configuration files for syntax and internal consistency
+    terraform validate
+
+    # Review the execution plan to see what changes will be made
     terraform plan
     ```
 
@@ -124,6 +131,9 @@ Grafana connects to CloudWatch using the provided `aws_access_key` and `aws_secr
 
 - **Different Grafana Instance:**  
   Update `grafana_url` and `grafana_auth` with new details.
+
+- **If you want to be alerted:**
+  Pass your email to `alert_email_address` variable.
 
 ---
 
